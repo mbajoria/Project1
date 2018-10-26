@@ -14,8 +14,8 @@ def getData(file):
 	# reads first line of file
 	line = inFile.readline()
 	# initializing empty list of dictionaries
-	listDict = []
-	headings = line.split(" ")
+	dictList = []
+	headings = line.split(",")
 	heading1 = headings[0]
 	heading2 = headings[1]
 	heading3 = headings[2]
@@ -26,15 +26,29 @@ def getData(file):
 
 	while line:
 		dictionary = {}
-		data = line.split(" ")
+		data = line.split(",")
+		first = data[0]
+		last = data[1]
+		email = data[2]
+		classYear = data[3]
+		dateOfBirth = data[4].strip()
 
+		dictionary[heading1] = first
+		dictionary[heading2] = last
+		dictionary[heading3] = email
+		dictionary[heading4] = classYear
+		dictionary[heading5] = dateOfBirth
+		dictList.append(dictionary)
+
+		line = inFile.readline()
+
+	return dictList
 
 def mySort(data,col):
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
 
-	pass
 
 
 def classSizes(data):
