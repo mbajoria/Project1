@@ -15,6 +15,7 @@ def getData(file):
 	line = inFile.readline()
 	# initializing empty list of dictionaries
 	dictList = []
+	# splitting the first row of data to seperate the headers
 	headings = line.split(",")
 	heading1 = headings[0]
 	heading2 = headings[1]
@@ -48,8 +49,9 @@ def mySort(data,col):
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
-
+	# sorting based on key from parameters
 	lst = sorted(data, key = lambda d : d[col])
+	# getting first dictionary in lst
 	newDict = lst[0]
 	firstName = newDict['First']
 	lastName = newDict['Last']
@@ -61,17 +63,21 @@ def classSizes(data):
 # Output: Return a list of tuples sorted by the number of students in that class in
 # descending order
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
+
+	# initializing empty dictionary
 	gradeDict = {}
 	for dictionary in data:
 		grade = dictionary['Class']
+		# increase count by 1 if grade already exists in dictionary
 		if grade in gradeDict:
 			gradeDict[grade] += 1
+		# otherwise start at 1
 		else:
 			gradeDict[grade] = 1
-
 	gradeLst = []
 	for i in gradeDict:
 		gradeLst.append((i, gradeDict[i]))
+	# sorting from highest to lowest
 	sortLst = sorted(gradeLst, key = lambda d : d[1], reverse = True)
 	return sortLst
 
@@ -85,15 +91,19 @@ def findMonth(a):
 	monthDict = {}
 	for i in a:
 		dob = i['DOB']
+		# splitting at / in order to retrieve only the month
 		month = dob.split("/")[0]
+		# increase count by 1 if month already exists in dictionary
 		if month in monthDict:
 			monthDict[month] += 1
+		# otherwise start at 1
 		else:
 			monthDict[month] = 1
 
 	monthLst = []
 	for i in monthDict:
 		monthLst.append((i, monthDict[i]))
+	# sorting from highest to lowest
 	sortLst = sorted(monthLst, key = lambda d : d[1], reverse = True)
 	return int(sortLst[0][0])
 
