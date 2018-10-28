@@ -82,7 +82,20 @@ def findMonth(a):
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
 
-	pass
+	monthDict = {}
+	for dictionary in a:
+		dateOfBirth = dictionary['DOB']
+		month = dateOfBirth.split("/")[0]
+		if month in monthDict:
+			monthDict[month] += 1
+		else:
+			monthDict[month] = 1
+
+	monthLst = []
+	for i in monthDict:
+		monthLst.append((i, monthDict[i]))
+	sortLst = sorted(monthLst, key = lambda d : d[1], reverse = True)
+	return int(sortLst[0][0])
 
 def mySortPrint(a,col,fileName):
 #Similar to mySort, but instead of returning single
