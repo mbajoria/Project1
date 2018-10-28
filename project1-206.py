@@ -20,7 +20,7 @@ def getData(file):
 	heading2 = headings[1]
 	heading3 = headings[2]
 	heading4 = headings[3]
-	heading5 = headings[4]
+	heading5 = headings[4].strip()
 	# making sure that we read the NEXT line
 	line = inFile.readline()
 
@@ -83,9 +83,9 @@ def findMonth(a):
 # Output: Return the month (1-12) that had the most births in the data
 
 	monthDict = {}
-	for dictionary in a:
-		dateOfBirth = dictionary['DOB']
-		month = dateOfBirth.split("/")[0]
+	for i in a:
+		dob = i['DOB']
+		month = dob.split("/")[0]
 		if month in monthDict:
 			monthDict[month] += 1
 		else:
