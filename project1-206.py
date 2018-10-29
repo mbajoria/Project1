@@ -25,7 +25,6 @@ def getData(file):
 	heading5 = headings[4].strip()
 	# making sure that we read the NEXT line
 	line = inputFile.readline()
-
 	while line:
 		dictionary = {}
 		data = line.split(",")
