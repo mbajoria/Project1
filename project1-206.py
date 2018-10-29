@@ -9,10 +9,11 @@ def getData(file):
 #Input: file name
 #Ouput: return a list of dictionary objects where
 #the keys are from the first row in the data. and the values are each of the other rows
+
 	# opening the given file
-	inFile = open(file)
+	inputFile = open(file)
 	# reads first line of file
-	line = inFile.readline()
+	line = inputFile.readline()
 	# initializing empty list of dictionaries
 	dictList = []
 	# splitting the first row of data to seperate the headers
@@ -23,7 +24,7 @@ def getData(file):
 	heading4 = headings[3]
 	heading5 = headings[4].strip()
 	# making sure that we read the NEXT line
-	line = inFile.readline()
+	line = inputFile.readline()
 
 	while line:
 		dictionary = {}
@@ -41,7 +42,7 @@ def getData(file):
 		dictionary[heading5] = dateOfBirth
 		dictList.append(dictionary)
 
-		line = inFile.readline()
+		line = inputFile.readline()
 
 	return dictList
 
@@ -49,6 +50,7 @@ def mySort(data,col):
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
+
 	# sorting based on key from parameters
 	lst = sorted(data, key = lambda d : d[col])
 	# getting first dictionary in lst
@@ -80,8 +82,6 @@ def classSizes(data):
 	# sorting from highest to lowest
 	sortLst = sorted(gradeLst, key = lambda d : d[1], reverse = True)
 	return sortLst
-
-
 
 def findMonth(a):
 # Find the most common birth month form this data
@@ -115,11 +115,11 @@ def mySortPrint(a,col,fileName):
 #Output: No return value, but the file is written
 
 	lst = sorted(a, key = lambda d : d[col])
-	outFile = open(fileName, "w")
+	outputFile = open(fileName, "w")
 	for student in lst:
-		outFile.write(student['First'] + "," + student['Last'] + "," + student['Email'] + '\n')
+		outputFile.write(student['First'] + "," + student['Last'] + "," + student['Email'] + '\n')
 
-	outFile.close()
+	outputFile.close()
 
 def findAge(a):
 # def findAge(a):
